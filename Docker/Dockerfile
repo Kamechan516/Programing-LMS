@@ -90,7 +90,7 @@ COPY  ./mysql/my.cnf /etc/mysql/conf.d/my.cnf
 ENV TZ=Asia/Tokyo
 
 # データベースを作成
-ENV MYSQL_DATABASE=laravel
+ENV MYSQL_DATABASE=LMS
 
 
 

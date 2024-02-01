@@ -40,6 +40,7 @@ services:
         environment:
             - PMA_HOST=db
             - PMA_USER=root
+            - PMA_PASSWORD=Pass-1234
         networks:
             - backend
 
