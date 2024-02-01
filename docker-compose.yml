@@ -1,0 +1,54 @@
+version: '3.9'
+
+services:
+    Web:
+        image: hallo-lms:nginx
+        container_name: LMS_Web
+        ports:
+            - "8800:80"
+        volumes:
+            - ./Docker/nginx/conf_dev:/etc/nginx/conf
+            - ./Docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./src:/var/www/app
+        networks:
+            - backend
+
+    php:
+        image: hallo-lms:php
+        container_name: LMS-PHP
+        volumes:
+            - ./Docker/php/conf_dev:/usr/local/etc/php
+            - ./src:/var/www/app
+        networks:
+            - backend
+
+    db:
+        image: hallo-lms:mysql-8.3
+        container_name: LMS-db
+        ports:
+            - "3356:3306"
+        volumes:
+            - db:/var/lib/mysql
+        networks:
+            - backend
+
+    pma:
+        image: hallo-lms:admin
+        container_name: LMS-admin
+        ports:
+            - "8801:80"
+        environment:
+            - PMA_HOST=db
+            - PMA_USER=root
+        networks:
+            - backend
+
+
+networks:
+    backend:
+        driver: bridge
+
+
+volumes:
+    db:
+        driver: local
