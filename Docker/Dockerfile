@@ -36,7 +36,7 @@ EXPOSE 5173
 RUN apt-get update && apt-get install -y git libzip-dev zip
 
 # PHP拡張モジュールのインストール
-RUN docker-php-ext-install zip pdo_mysql mbstring openssl
+RUN docker-php-ext-install zip pdo_mysql
 
 # Composerのインストール
 COPY --from=composer:lts /usr/bin/composer /usr/bin/composer

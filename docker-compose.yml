@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
     Web:
-        image: hallo-lms:nginx
+        image: hallo-lms:web
         container_name: LMS_Web
         ports:
             - "8800:80"
@@ -23,7 +23,7 @@ services:
             - backend
 
     db:
-        image: hallo-lms:mysql-8.3
+        image: hallo-lms:db
         container_name: LMS-db
         ports:
             - "3356:3306"
