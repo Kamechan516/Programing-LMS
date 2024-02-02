@@ -16,6 +16,8 @@ services:
     php:
         image: hallo-lms:php
         container_name: LMS-PHP
+        ports:
+            - "5173:5173"
         volumes:
             - ./Docker/php/conf_dev:/usr/local/etc/php
             - ./src:/var/www/app
